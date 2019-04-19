@@ -1,0 +1,18 @@
+---
+layout: layouts/base
+permalink: /{{ comic.slug.current }}/index.html
+pagination:
+  data: comics
+  size: 1
+  alias: comic
+---
+
+<h1>{{ comic.title }}</h1>
+<p><time datetime="{{ comic.publishDate }}">{{ comic.publishDate }}</time></p>
+<p>{{ comic.description }}</p>
+
+{% for image in comic.panes %}
+  <p>
+    <img src="{{ urlTo.sanityImage(image).width(768).sharpen(20).url() }}" alt="{{ comic.title }} - Pane #{{ loop.index }}">
+  </p>
+{% endfor %}

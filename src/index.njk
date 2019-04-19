@@ -1,0 +1,22 @@
+---
+title: Critter Comics
+layout: layouts/base.njk
+---
+
+<div class="comics-list">
+{% for comic in comics %}
+  <h2>
+    <a href="{{ urlTo.comic(comic.slug.current) }}">{{ comic.title }}</a>
+  </h2>
+  <p>
+    <a href="{{ urlTo.comic(comic.slug.current) }}">
+      <img src="{{ urlTo.sanityImage(comic.poster).width(200).sharpen(40).url() }}" alt="{{ comic.title }}">
+    </a>
+  </p>
+  <p>
+    <time>{{ comic.publishDate }}</time>
+  </p>
+  <p>{{ comic.description }}</p>
+    <hr>
+{% endfor %}
+</div>
