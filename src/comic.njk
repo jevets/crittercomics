@@ -1,18 +1,22 @@
 ---
 layout: layouts/base
-permalink: /{{ comic.slug.current }}/index.html
 pagination:
   data: comics
   size: 1
   alias: comic
+permalink: /{{ comic.slug.current }}/index.html
 ---
 
-<h1>{{ comic.title }}</h1>
-<p><time datetime="{{ comic.publishDate }}">{{ comic.publishDate }}</time></p>
-<p>{{ comic.description }}</p>
+<h1 class="text-4xl font-black my-4 text-center">{{ comic.title }}</h1>
+
+<p class="text-center text-gray-700 text-sm my-4">
+  <time datetime="{{ comic.publishDate | machineDate }}">{{ comic.publishDate | readableDate }}</time>
+</p>
+
+{# <p class="mx-auto max-w-sm my-4 leading-normal text-lg text-center">{{ comic.description }}</p> #}
 
 {% for image in comic.panes %}
-  <p>
+  <div class="my-4">
     <img src="{{ urlTo.sanityImage(image).width(768).sharpen(20).url() }}" alt="{{ comic.title }} - Pane #{{ loop.index }}">
-  </p>
+  </div>
 {% endfor %}

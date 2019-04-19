@@ -1,0 +1,9 @@
+body {
+  @apply font-sans;
+}
+.container {
+  @apply max-w-3xl mx-auto px-4;
+}
+.site-main {
+  @apply py-4;
+}
