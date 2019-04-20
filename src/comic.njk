@@ -23,17 +23,23 @@ permalink: /{{ comic.slug.current }}/index.html
 {% endblock %}
 
 {% block content %}
-  <h1 class="text-4xl font-black my-4 text-center">{{ comic.title }}</h1>
+  <artcle class="comic">
+    <header class="comic-header">
+      <h1 class="comic-title">{{ comic.title }}</h1>
 
-  <p class="text-center text-gray-700 text-sm my-4">
-    <time datetime="{{ comic.publishDate | machineDate }}">{{ comic.publishDate | readableDate }}</time>
-  </p>
+      <p class="comic-pubdate">
+        <time datetime="{{ comic.publishDate | machineDate }}">{{ comic.publishDate | readableDate }}</time>
+      </p>
 
-  {# <p class="mx-auto max-w-sm my-4 leading-normal text-lg text-center">{{ comic.description }}</p> #}
+      {# <p class="mx-auto max-w-sm my-4 leading-normal text-lg text-center">{{ comic.description }}</p> #}
+    </header>
 
-  {% for image in comic.panes %}
-    <div class="my-4">
-      <img src="{{ urlTo.sanityImage(image).width(768).sharpen(20).url() }}" alt="{{ comic.title }} - Pane #{{ loop.index }}" loading="lazy">
+    <div class="comic-panes">
+      {% for image in comic.panes %}
+        <div class="comic-pane">
+          <img src="{{ urlTo.sanityImage(image).width(768).sharpen(20).url() }}" alt="{{ comic.title }} - Pane #{{ loop.index }}" loading="lazy">
+        </div>
+      {% endfor %}
     </div>
-  {% endfor %}
+  </artcle>
 {% endblock %}

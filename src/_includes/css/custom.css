@@ -18,3 +18,18 @@ body {
 .site-main {
   @apply py-6;
 }
+
+.comic {
+  .comic-header {
+    @apply text-center;
+  }
+  .comic-title {
+    @apply text-5xl font-black my-4;
+  }
+  .comic-pubdate {
+    @apply text-gray-700 text-sm my-4;
+  }
+  .comic-pane {
+    @apply my-4;
+  }
+}
