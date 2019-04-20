@@ -19,7 +19,7 @@ permalink: /{{ comic.slug.current }}/index.html
   <meta property="og:type" content="article">
   <meta property="og:description" content="{{ comic.description }}">
   <meta property="og:image" content="{{ urlTo.sanityImage(comic.poster).width(480).url() }}">
-  <meta property="og:url" content="{{ site.baseUrl }}{{ urlTo.comic(comic.slug) }}">
+  <meta property="og:url" content="{{ site.baseUrl }}{{ urlTo.comic(comic) }}">
 {% endblock %}
 
 {% block content %}
@@ -33,7 +33,7 @@ permalink: /{{ comic.slug.current }}/index.html
 
   {% for image in comic.panes %}
     <div class="my-4">
-      <img src="{{ urlTo.sanityImage(image).width(768).sharpen(20).url() }}" alt="{{ comic.title }} - Pane #{{ loop.index }}">
+      <img src="{{ urlTo.sanityImage(image).width(768).sharpen(20).url() }}" alt="{{ comic.title }} - Pane #{{ loop.index }}" loading="lazy">
     </div>
   {% endfor %}
 {% endblock %}
