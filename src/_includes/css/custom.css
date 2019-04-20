@@ -1,5 +1,5 @@
 body {
-  @apply font-sans;
+  @apply font-display;
 }
 .container {
   @apply max-w-3xl mx-auto px-4;

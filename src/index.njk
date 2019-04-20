@@ -3,9 +3,9 @@ title: Critter Comics
 layout: layouts/base.njk
 ---
 
-<div class="comics-list flex flex-wrap -mx-2">
+<div class="comics-list md:flex md:flex-wrap md:-mx-2">
   {% for comic in comics %}
-    <div class="w-1/2 px-2">
+    <div class="md:w-1/2 px-2 mb-8">
       {% set comicTitle = comic.title %}
       {% set comicUrl %}{{ urlTo.comic(comic.slug.current) }}{% endset %}
       {% set comicThumbnail = urlTo.sanityImage(comic.poster).width(520).sharpen(40).url() %}

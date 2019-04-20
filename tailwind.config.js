@@ -1,6 +1,10 @@
+const fontFamily = require('tailwindcss/defaultTheme').fontFamily
+
+fontFamily.display = ['"Gloria Hallelujah"', 'cursive']
+
 module.exports = {
   theme: {
-    // Some useful comment
+    fontFamily,
   },
   variants: {
     // Some useful comment

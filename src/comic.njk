@@ -1,5 +1,4 @@
 ---
-layout: layouts/base
 pagination:
   data: comics
   size: 1
@@ -7,16 +6,34 @@ pagination:
 permalink: /{{ comic.slug.current }}/index.html
 ---
 
-<h1 class="text-4xl font-black my-4 text-center">{{ comic.title }}</h1>
+{% extends "layouts/base.njk" %}
 
-<p class="text-center text-gray-700 text-sm my-4">
-  <time datetime="{{ comic.publishDate | machineDate }}">{{ comic.publishDate | readableDate }}</time>
-</p>
+{% block title %}{{ comic.title }}{% endblock %}
 
-{# <p class="mx-auto max-w-sm my-4 leading-normal text-lg text-center">{{ comic.description }}</p> #}
+{% block meta %}
+  <meta name="description" content="{{ comic.description }}">
+  <meta name="author" content="{{ site.author }}">
 
-{% for image in comic.panes %}
-  <div class="my-4">
-    <img src="{{ urlTo.sanityImage(image).width(768).sharpen(20).url() }}" alt="{{ comic.title }} - Pane #{{ loop.index }}">
-  </div>
-{% endfor %}
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ comic.title }}">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="{{ comic.description }}">
+  <meta property="og:image" content="{{ urlTo.sanityImage(comic.poster).width(480).url() }}">
+  <meta property="og:url" content="{{ site.baseUrl }}{{ urlTo.comic(comic.slug) }}">
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-4xl font-black my-4 text-center">{{ comic.title }}</h1>
+
+  <p class="text-center text-gray-700 text-sm my-4">
+    <time datetime="{{ comic.publishDate | machineDate }}">{{ comic.publishDate | readableDate }}</time>
+  </p>
+
+  {# <p class="mx-auto max-w-sm my-4 leading-normal text-lg text-center">{{ comic.description }}</p> #}
+
+  {% for image in comic.panes %}
+    <div class="my-4">
+      <img src="{{ urlTo.sanityImage(image).width(768).sharpen(20).url() }}" alt="{{ comic.title }} - Pane #{{ loop.index }}">
+    </div>
+  {% endfor %}
+{% endblock %}
